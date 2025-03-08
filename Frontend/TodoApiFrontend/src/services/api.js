@@ -17,7 +17,7 @@ export const createTask = async (task) => {
 // Actualizar una tarea
 export const updateTask = async (id, taskData) => {
   try {
-    const response = await axios.put(`/api/tasks/${id}`, taskData);
+    const response = await axios.put(`${API_URL}/${id}`, taskData); // Usar API_URL completa
     return response.data;
   } catch (error) {
     console.error('Error al actualizar la tarea', error);
@@ -27,7 +27,7 @@ export const updateTask = async (id, taskData) => {
 // Eliminar una tarea
 export const deleteTask = async (id) => {
   try {
-    const response = await axios.delete(`/api/tasks/${id}`);
+    const response = await axios.delete(`${API_URL}/${id}`); // Usar API_URL completa
     return response.data;
   } catch (error) {
     console.error('Error al eliminar la tarea', error);

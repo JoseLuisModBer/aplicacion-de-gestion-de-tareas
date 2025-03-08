@@ -23,12 +23,17 @@ const Home = () => {
 
   const handleToggleComplete = async (task) => {
     await updateTask(task.id, { isCompleted: !task.isCompleted });
-    loadTasks(); // Si prefieres recargar todas las tareas después de actualizar
+    loadTasks(); // Recargar todas las tareas después de actualizar
   };
 
   const handleDeleteTask = async (id) => {
     await deleteTask(id);
     loadTasks(); // Recargar todas las tareas después de eliminar
+  };
+
+  const handleUpdateTask = async (updatedTask) => {
+    await updateTask(updatedTask.id, updatedTask); // Realiza la actualización en el backend
+    loadTasks(); // Recargar las tareas para mostrar los cambios
   };
 
   return (
@@ -42,6 +47,7 @@ const Home = () => {
             task={task}
             onToggleComplete={handleToggleComplete}
             onDelete={handleDeleteTask}
+            onUpdate={handleUpdateTask} // Pasa la función para actualizar
           />
         ))}
       </ul>

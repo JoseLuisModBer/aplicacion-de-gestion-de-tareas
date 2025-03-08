@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const TaskItem = ({ task, onToggleComplete, onDelete }) => {
+const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingDescription, setIsEditingDescription] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState(task.title);
@@ -17,8 +17,8 @@ const TaskItem = ({ task, onToggleComplete, onDelete }) => {
   };
 
   const handleSaveTitle = () => {
-    // Aquí actualizamos el título usando PUT o PATCH
-    onToggleComplete({
+    // Actualizamos el título
+    onUpdate({
       id: task.id,
       title: updatedTitle,
       description: task.description,
@@ -28,8 +28,8 @@ const TaskItem = ({ task, onToggleComplete, onDelete }) => {
   };
 
   const handleSaveDescription = () => {
-    // Aquí actualizamos la descripción usando PUT o PATCH
-    onToggleComplete({
+    // Actualizamos la descripción
+    onUpdate({
       id: task.id,
       title: task.title,
       description: updatedDescription,
