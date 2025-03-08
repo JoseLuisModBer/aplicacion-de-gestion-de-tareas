@@ -6,6 +6,7 @@ import TaskItem from '../components/TaskItem';
 const Home = () => {
   const [tasks, setTasks] = useState([]);
 
+  // Cargar las tareas cuando el componente se monta
   useEffect(() => {
     loadTasks();
   }, []);
@@ -16,18 +17,18 @@ const Home = () => {
   };
 
   const handleCreateTask = async (task) => {
-    await createTask(task);
-    loadTasks();
+    const createdTask = await createTask(task); // Obtener la tarea creada desde la respuesta
+    setTasks((prevTasks) => [...prevTasks, createdTask]); // Agregarla al estado de tareas
   };
 
   const handleToggleComplete = async (task) => {
     await updateTask(task.id, { isCompleted: !task.isCompleted });
-    loadTasks();
+    loadTasks(); // Si prefieres recargar todas las tareas después de actualizar
   };
 
   const handleDeleteTask = async (id) => {
     await deleteTask(id);
-    loadTasks();
+    loadTasks(); // Recargar todas las tareas después de eliminar
   };
 
   return (

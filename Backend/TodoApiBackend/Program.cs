@@ -10,6 +10,15 @@ builder.Services.AddDbContext<TodoContext>(options =>
 // Agregar controladores
 builder.Services.AddControllers();
 
+// Agregar y configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:5173") // URL de tu frontend
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 // Middleware global para manejar excepciones
@@ -24,6 +33,9 @@ app.UseExceptionHandler(errorApp =>
         await context.Response.WriteAsJsonAsync(errorResponse);
     });
 });
+
+// Usar CORS en la aplicación
+app.UseCors("AllowSpecificOrigin");  // Aplicar la política CORS
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

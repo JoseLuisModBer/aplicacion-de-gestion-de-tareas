@@ -60,7 +60,13 @@ namespace TodoApiBackend.Controllers
                 return NotFound(new { message = $"No se encontró la tarea con ID {id}" });
             }
 
-            // Solo actualizamos los campos si vienen en la petición
+            // Actualizar el campo IsCompleted si se envió en la solicitud
+            if (updatedTask.IsCompleted.HasValue)
+            {
+                task.IsCompleted = updatedTask.IsCompleted.Value;
+            }
+
+            // Actualizar el título y la descripción si se enviaron en la solicitud
             if (updatedTask.Title != null)
             {
                 task.Title = updatedTask.Title;
@@ -68,10 +74,6 @@ namespace TodoApiBackend.Controllers
             if (updatedTask.Description != null)
             {
                 task.Description = updatedTask.Description;
-            }
-            if (updatedTask.IsCompleted.HasValue)
-            {
-                task.IsCompleted = updatedTask.IsCompleted.Value;
             }
 
             await _context.SaveChangesAsync();

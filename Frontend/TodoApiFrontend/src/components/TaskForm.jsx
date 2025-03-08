@@ -15,8 +15,8 @@ const TaskForm = ({ onCreate }) => {
       );
       return;
     }
-    onCreate(task);
-    setTask({ title: '', description: '' });
+    onCreate(task); // Enviar la tarea para ser creada
+    setTask({ title: '', description: '' }); // Limpiar el formulario
   };
 
   return (
