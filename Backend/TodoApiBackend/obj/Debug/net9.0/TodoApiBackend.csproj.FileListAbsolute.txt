@@ -34,3 +34,4 @@ C:\Users\PC José Luis\Desktop\Cwellt\aplicacion-de-gestion-de-tareas\Backend\To
 C:\Users\PC José Luis\Desktop\Cwellt\aplicacion-de-gestion-de-tareas\Backend\TodoApiBackend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\PC José Luis\Desktop\Cwellt\aplicacion-de-gestion-de-tareas\Backend\TodoApiBackend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\PC José Luis\Desktop\Cwellt\aplicacion-de-gestion-de-tareas\Backend\TodoApiBackend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\PC José Luis\Desktop\Cwellt\aplicacion-de-gestion-de-tareas\Backend\TodoApiBackend\obj\Debug\net9.0\TodoApiBackend.sourcelink.json

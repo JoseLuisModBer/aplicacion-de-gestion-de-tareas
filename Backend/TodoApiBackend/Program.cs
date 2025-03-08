@@ -12,8 +12,20 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+// Middleware global para manejar excepciones
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        context.Response.StatusCode = 500;
+        context.Response.ContentType = "application/json";
 
+        var errorResponse = new { message = "Ha ocurrido un error interno en el servidor." };
+        await context.Response.WriteAsJsonAsync(errorResponse);
+    });
+});
+
+app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers(); // Mapeamos los controladores
 

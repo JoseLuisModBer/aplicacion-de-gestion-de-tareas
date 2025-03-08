@@ -28,12 +28,10 @@ namespace TodoApiBackend.Controllers
         public async Task<ActionResult<TaskItem>> GetTask(int id)
         {
             var task = await _context.Tasks.FindAsync(id);
-
             if (task == null)
             {
-                return NotFound();
+                return NotFound(new { message = $"No se encontró la tarea con ID {id}" });
             }
-
             return task;
         }
 
@@ -41,40 +39,43 @@ namespace TodoApiBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<TaskItem>> PostTask(TaskItem task)
         {
+            if (string.IsNullOrWhiteSpace(task.Title) || string.IsNullOrWhiteSpace(task.Description) || task.Description.Length < 10)
+            {
+                return BadRequest(new { message = "El título es obligatorio y la descripción debe tener al menos 10 caracteres." });
+            }
+
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetTask), new { id = task.Id }, task);
         }
 
-        // PUT: api/tasks/5
+        // PUT: api/tasks/5 (Actualización parcial)
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTask(int id, TaskItem task)
+        public async Task<IActionResult> UpdateTask(int id, TaskUpdateDto updatedTask)
         {
-            if (id != task.Id)
+            var task = await _context.Tasks.FindAsync(id);
+            if (task == null)
             {
-                return BadRequest();
+                return NotFound(new { message = $"No se encontró la tarea con ID {id}" });
             }
 
-            _context.Entry(task).State = EntityState.Modified;
-
-            try
+            // Solo actualizamos los campos si vienen en la petición
+            if (updatedTask.Title != null)
             {
-                await _context.SaveChangesAsync();
+                task.Title = updatedTask.Title;
             }
-            catch (DbUpdateConcurrencyException)
+            if (updatedTask.Description != null)
             {
-                if (!TaskItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                task.Description = updatedTask.Description;
+            }
+            if (updatedTask.IsCompleted.HasValue)
+            {
+                task.IsCompleted = updatedTask.IsCompleted.Value;
             }
 
-            return NoContent();
+            await _context.SaveChangesAsync();
+            return Ok(task);
         }
 
         // DELETE: api/tasks/5
@@ -84,18 +85,13 @@ namespace TodoApiBackend.Controllers
             var task = await _context.Tasks.FindAsync(id);
             if (task == null)
             {
-                return NotFound();
+                return NotFound(new { message = $"No se encontró la tarea con ID {id}" });
             }
 
             _context.Tasks.Remove(task);
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool TaskItemExists(int id)
-        {
-            return _context.Tasks.Any(e => e.Id == id);
         }
     }
 }
