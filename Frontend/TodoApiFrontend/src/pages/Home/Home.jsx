@@ -1,7 +1,13 @@
+import './Home.css';
 import { useEffect, useState } from 'react';
-import { getTasks, createTask, updateTask, deleteTask } from '../services/api';
-import TaskForm from '../components/TaskForm';
-import TaskItem from '../components/TaskItem';
+import {
+  getTasks,
+  createTask,
+  updateTask,
+  deleteTask,
+} from '../../services/api';
+import TaskForm from '../../components/TaskForm/TaskForm';
+import TaskItem from '../../components/TaskItem/TaskItem';
 
 const Home = () => {
   const [tasks, setTasks] = useState([]);
@@ -37,8 +43,8 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Lista de Tareas</h1>
+    <div className="home-container">
+      <h1>Crea una nueva tarea</h1>
       <TaskForm onCreate={handleCreateTask} />
       <ul>
         {tasks.map((task) => (

@@ -1,0 +1,100 @@
+/*######################
+## TASKITEM COMPONENT ##
+######################*/
+
+.tasks-container:first-of-type {
+  margin-top: 2rem;
+}
+
+.tasks-container {
+  margin-bottom: 1rem;
+  background-color: var(--azulClaro);
+  margin: 1rem 20px 20px 20px;
+  padding: 1rem;
+  border: 2px solid var(--azulOscuro);
+  border-radius: 1rem;
+  list-style: none;
+}
+
+.tasks-container > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.checkbox-and-content {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.task-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.task-content > div:first-of-type {
+  margin-bottom: 0.5rem;
+}
+
+.task-content > div:first-of-type > span {
+  font-weight: bold;
+}
+
+.task-content > div > span {
+  margin-right: 1rem;
+}
+
+.contenido-sin-editar button,
+.contenido-a-editar button:first-of-type {
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: var(--verde);
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  box-shadow: 4px 4px 3px 1px rgba(0, 0, 0, 0.15);
+  padding: 0.1rem 0.5rem;
+}
+
+.contenido-sin-editar button:hover,
+.contenido-a-editar button:first-of-type:hover {
+  background-color: var(--verdeHover);
+}
+
+.contenido-a-editar button:last-of-type {
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: var(--rojo);
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  box-shadow: 4px 4px 3px 1px rgba(0, 0, 0, 0.15);
+  padding: 0.1rem 0.5rem;
+}
+
+.contenido-a-editar button:last-of-type:hover {
+  background-color: var(--rojoHover);
+}
+
+.contenido-a-editar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.task-errasebutton button {
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: var(--rojo);
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  box-shadow: 4px 4px 3px 1px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0.5rem;
+}
+
+.task-errasebutton button:hover {
+  background-color: var(--rojoHover);
+}

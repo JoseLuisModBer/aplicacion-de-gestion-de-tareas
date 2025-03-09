@@ -1,0 +1,34 @@
+/*
+############
+## FOOTER ##
+############
+*/
+/*Damos un padding al footer y lo centramos usando grid con place-content que sirve para centrar tanto en el eje vertical como en el horizontal (porque en este caso el footer solo tiene un elemento que ocupa toda una zelda)*/
+.app > footer {
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+  background-color: var(--azulOscuro);
+}
+
+.app > footer > p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  font-family: 'Shantell Sans', sans-serif;
+}
+
+/*#####################################################################*/
+
+/*
+  ### RESPONSIVE PARA TABLET ##
+  #############################
+  #### MEDIA QUERY: 700px #####
+  #############################
+  */
+/*Todo esto son cambios específicos que se aplicarán a partir de los 700 píxeles*/
+@media (min-width: 700px) {
+  .app > footer > p {
+    font-size: 1.5rem;
+  }
+}

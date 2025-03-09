@@ -1,3 +1,4 @@
+import './TaskForm.css';
 import { useState } from 'react';
 
 const TaskForm = ({ onCreate }) => {
@@ -20,23 +21,27 @@ const TaskForm = ({ onCreate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="title"
-        placeholder="Título"
-        value={task.title}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="description"
-        placeholder="Descripción"
-        value={task.description}
-        onChange={handleChange}
-      />
-      <button type="submit">Agregar Tarea</button>
-    </form>
+    <div className="task-form-container">
+      <form className="task-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="title"
+          placeholder="Título"
+          value={task.title}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="description"
+          placeholder="Descripción"
+          value={task.description}
+          onChange={handleChange}
+        />
+        <button className="form-button" type="submit">
+          Agregar Tarea
+        </button>
+      </form>
+    </div>
   );
 };
 
