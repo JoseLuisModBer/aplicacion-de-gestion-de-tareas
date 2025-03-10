@@ -1,6 +1,6 @@
-/*######################
-## TASKITEM COMPONENT ##
-######################*/
+/*########################
+### TASKITEM COMPONENT ###
+########################*/
 
 .tasks-container:first-of-type {
   margin-top: 2rem;
@@ -8,12 +8,17 @@
 
 .tasks-container {
   margin-bottom: 1rem;
-  background-color: var(--azulClaro);
+  background-color: var(--gris);
   margin: 1rem 20px 20px 20px;
   padding: 1rem;
-  border: 2px solid var(--azulOscuro);
+  border: 2px solid var(--marron);
   border-radius: 1rem;
   list-style: none;
+}
+
+.tasks-container.completed {
+  background-color: var(--gris); /* Por ejemplo, un verde claro */
+  opacity: 0.5; /* O puedes añadir opacidad */
 }
 
 .tasks-container > li {
@@ -97,4 +102,32 @@
 
 .task-errasebutton button:hover {
   background-color: var(--rojoHover);
+}
+
+/*------------------------------------------------------*/
+
+/*###################
+#### RESPONSIVE #####
+###################*/
+
+@media (max-width: 781px) {
+  .tasks-container > li {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .task-checkbox {
+    align-items: start;
+    padding-top: 0.3rem;
+  }
+
+  .task-errasebutton {
+    padding-left: 1.7rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .tasks-container {
+    margin: 1rem 0px 20px 0px;
+  }
 }

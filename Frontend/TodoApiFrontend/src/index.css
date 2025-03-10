@@ -10,28 +10,51 @@
   --azulOscuro: #4cc9c2;
   --azulClaro: #c9e9e8;
   --amarillo: #f2e2ba;
+  --marron: #996d49;
+  --negro: #202020;
+  --gris: #dfe0df;
+  --rojo: #ff8887;
+  --rojoHover: #ffbfbd;
+  --verde: #00c764;
+  --verdeHover: #96dba7;
+}
+
+/* :root {
+  --azulOscuro: #4cc9c2;
+  --azulClaro: #c9e9e8;
+  --amarillo: #f2e2ba;
   --rojo: #fa736a;
   --rojoHover: #fab8b3;
   --verde: #50da72;
   --verdeHover: #96dba7;
-}
+} */
 
 h1,
 h2 {
   font-family: 'Permanent Marker', sans-serif;
   letter-spacing: 0.1rem;
-  color: var(--rojo);
+  color: var(--negro);
 }
 
-h3 {
-  font-family: 'Shantell Sans', sans-serif;
-  letter-spacing: 0.1rem;
-  color: var(--azulOscuro);
-}
-
+h3,
 p,
 input,
 button,
 li {
   font-family: 'Shantell Sans', sans-serif;
+}
+
+h3 {
+  letter-spacing: 0.1rem;
+  color: var(--marron);
+}
+
+p,
+input,
+li {
+  font-size: 18px;
+}
+
+button {
+  font-size: 14px !important;
 }

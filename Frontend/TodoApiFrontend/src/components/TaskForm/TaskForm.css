@@ -1,6 +1,6 @@
-/*######################
-## TASKFORM COMPONENT ##
-######################*/
+/*########################
+### TASKFORM COMPONENT ###
+########################*/
 
 .task-form-container {
   display: flex;
@@ -12,16 +12,16 @@ form.task-form {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--azulClaro);
+  background-color: var(--gris);
   margin: 1rem 20px 20px 20px;
   padding: 1rem;
-  border: 2px solid var(--azulOscuro);
+  border: 2px solid var(--marron);
   border-radius: 1rem;
   list-style: none;
 }
 
 form.task-form input {
-  border: 2px solid var(--azulOscuro);
+  border: 2px solid var(--marron);
   padding: 0.5rem;
   width: 100%;
 }
@@ -38,4 +38,16 @@ form.task-form .form-button {
 
 form.task-form .form-button:hover {
   background-color: var(--verdeHover);
+}
+
+/*------------------------------------------------------*/
+
+/*###################
+#### RESPONSIVE #####
+###################*/
+
+@media (max-width: 450px) {
+  form.task-form {
+    margin: 1rem 0px 20px 0px;
+  }
 }

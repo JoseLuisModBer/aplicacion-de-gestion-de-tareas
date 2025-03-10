@@ -2,6 +2,12 @@ import './Header.css';
 
 import { NavLink } from 'react-router-dom';
 
+/*------------------------------------------------------*/
+
+/*####################
+### FUNCIÓN HEADER ###
+####################*/
+
 const Header = () => {
   return (
     <header>

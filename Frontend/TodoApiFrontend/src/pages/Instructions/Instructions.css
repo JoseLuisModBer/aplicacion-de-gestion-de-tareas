@@ -1,20 +1,21 @@
-/*
-#######################
-## INSTRUCTIONS PAGE ##
-#######################
-*/
+/*#######################
+### INSTRUCTIONS PAGE ###
+#######################*/
 
 .instructions-container {
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 1rem 3rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .instructions-container > div {
-  width: 100%;
+  width: 70%;
 }
 
 .instructions-container > div > h2 {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .instructions-container > div > .h2-english-instructions {
@@ -23,7 +24,7 @@
 
 .instructions-container > div > h3 {
   padding: 1rem 0rem 0.5rem 0rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .instructions-container > div > .instructions-ul,
@@ -41,68 +42,41 @@
 .instructions-container > div > p,
 .instructions-container > div > .instructions-ul > li,
 .instructions-container > div > .instructions-ol > li {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
-/*#####################################################################*/
+/*------------------------------------------------------*/
 
-/*
-  ### RESPONSIVE PARA TABLET ##
-  #############################
-  #### MEDIA QUERY: 700px #####
-  #############################
-  */
-/*Todo esto son cambios específicos que se aplicarán a partir de los 700 píxeles*/
-@media (min-width: 700px) {
-  .instructions-container {
-    padding: 1rem 3rem 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+/*###################
+#### RESPONSIVE #####
+###################*/
 
+@media (max-width: 1200px) {
   .instructions-container > div {
     width: 90%;
   }
-
-  .instructions-container > div > h2 {
-    text-align: center;
-    font-size: 2rem;
-  }
-
-  /*Tamaños de letra*/
-  .instructions-container > div > h3 {
-    font-size: 1.5rem;
-  }
-  .instructions-container > div > p,
-  .instructions-container > div > .instructions-ul > li,
-  .instructions-container > div > .instructions-ol > li {
-    font-size: 1.2rem;
-  }
 }
 
-/*####################################################################*/
-
-/*
-  ##### RESPONSIVE PARA PC ####
-  #############################
-  #### MEDIA QUERY: 1200px ####
-  #############################
-  */
-/*Todo esto son cambios específicos que se aplicarán a partir de los 1200 píxeles*/
-@media (min-width: 1200px) {
+@media (max-width: 700px) {
   .instructions-container {
-    padding: 1rem 3rem 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 1rem 2rem 2rem 2rem;
   }
 
   .instructions-container > div {
-    width: 70%;
+    width: 100%;
   }
 
   .instructions-container > div > h2 {
-    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .instructions-container > div > h3 {
+    font-size: 1rem;
+  }
+
+  .instructions-container > div > p,
+  .instructions-container > div > .instructions-ul > li,
+  .instructions-container > div > .instructions-ol > li {
+    font-size: 1rem;
   }
 }

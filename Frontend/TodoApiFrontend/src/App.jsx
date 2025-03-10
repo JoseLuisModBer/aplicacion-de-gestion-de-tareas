@@ -6,6 +6,12 @@ import Home from './pages/Home/Home';
 import Instructions from './pages/Instructions/Instructions';
 import Footer from './components/Footer/Footer';
 
+/*------------------------------------------------------*/
+
+/*#################
+### FUNCIÓN APP ###
+#################*/
+
 function App() {
   return (
     <div className="app">

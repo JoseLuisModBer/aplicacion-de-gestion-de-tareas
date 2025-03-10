@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5229/api/tasks'; // Ajusta el puerto si es necesario
+const API_URL = 'http://localhost:5229/api/tasks';
 
 // Obtener todas las tareas
 export const getTasks = async () => {
@@ -11,13 +11,13 @@ export const getTasks = async () => {
 // Crear una nueva tarea
 export const createTask = async (task) => {
   const response = await axios.post(API_URL, task);
-  return response.data; // Devolver la tarea creada
+  return response.data;
 };
 
 // Actualizar una tarea
 export const updateTask = async (id, taskData) => {
   try {
-    const response = await axios.put(`${API_URL}/${id}`, taskData); // Usar API_URL completa
+    const response = await axios.put(`${API_URL}/${id}`, taskData);
     return response.data;
   } catch (error) {
     console.error('Error al actualizar la tarea', error);
@@ -27,7 +27,7 @@ export const updateTask = async (id, taskData) => {
 // Eliminar una tarea
 export const deleteTask = async (id) => {
   try {
-    const response = await axios.delete(`${API_URL}/${id}`); // Usar API_URL completa
+    const response = await axios.delete(`${API_URL}/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error al eliminar la tarea', error);

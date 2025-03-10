@@ -1,6 +1,12 @@
 import './TaskForm.css';
 import { useState } from 'react';
 
+/*------------------------------------------------------*/
+
+/*######################
+### FUNCIÓN TASKFORM ###
+######################*/
+
 const TaskForm = ({ onCreate }) => {
   const [task, setTask] = useState({ title: '', description: '' });
 
@@ -16,8 +22,8 @@ const TaskForm = ({ onCreate }) => {
       );
       return;
     }
-    onCreate(task); // Enviar la tarea para ser creada
-    setTask({ title: '', description: '' }); // Limpiar el formulario
+    onCreate(task);
+    setTask({ title: '', description: '' });
   };
 
   return (

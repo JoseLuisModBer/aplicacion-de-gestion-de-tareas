@@ -1,6 +1,12 @@
 import './TaskItem.css';
 import { useState } from 'react';
 
+/*------------------------------------------------------*/
+
+/*######################
+### FUNCIÓN TASKITEM ###
+######################*/
+
 const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingDescription, setIsEditingDescription] = useState(false);
@@ -18,7 +24,6 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
   };
 
   const handleSaveTitle = () => {
-    // Actualizamos el título
     onUpdate({
       id: task.id,
       title: updatedTitle,
@@ -29,7 +34,6 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
   };
 
   const handleSaveDescription = () => {
-    // Actualizamos la descripción
     onUpdate({
       id: task.id,
       title: task.title,
@@ -40,7 +44,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
   };
 
   return (
-    <div className="tasks-container">
+    <div className={`tasks-container ${task.isCompleted ? 'completed' : ''}`}>
       <li className="task-container">
         <div className="checkbox-and-content">
           <div className="task-checkbox">
@@ -59,6 +63,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
                   type="text"
                   value={updatedTitle}
                   onChange={(e) => setUpdatedTitle(e.target.value)}
+                  autoFocus
                 />
                 <button onClick={handleSaveTitle}>Guardar</button>
                 <button onClick={handleToggleTitleEdit}>Cancelar</button>
@@ -72,7 +77,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
                 >
                   {task.title}
                 </span>
-                <button onClick={handleToggleTitleEdit}>Editar Título</button>
+                <button onClick={handleToggleTitleEdit}>Editar</button>
               </div>
             )}
 
@@ -82,6 +87,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
                 <textarea
                   value={updatedDescription}
                   onChange={(e) => setUpdatedDescription(e.target.value)}
+                  autoFocus
                 />
                 <button onClick={handleSaveDescription}>Guardar</button>
                 <button onClick={handleToggleDescriptionEdit}>Cancelar</button>
@@ -95,17 +101,27 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onUpdate }) => {
                 >
                   {task.description}
                 </span>
-                <button onClick={handleToggleDescriptionEdit}>
-                  Editar Descripción
-                </button>
+                <button onClick={handleToggleDescriptionEdit}>Editar</button>
               </div>
             )}
           </div>
         </div>
 
         <div className="task-errasebutton">
-          {/* Botón para eliminar la tarea */}
-          <button onClick={() => onDelete(task.id)}>Eliminar</button>
+          {/* Botón para eliminar la tarea con confirmación de borrado para evitar borrar una tarea por accidente */}
+          <button
+            onClick={() => {
+              if (
+                window.confirm(
+                  '¿Estás seguro de que quieres eliminar esta tarea?'
+                )
+              ) {
+                onDelete(task.id);
+              }
+            }}
+          >
+            Eliminar
+          </button>
         </div>
       </li>
     </div>
