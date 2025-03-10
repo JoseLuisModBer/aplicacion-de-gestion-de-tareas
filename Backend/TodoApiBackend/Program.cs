@@ -3,14 +3,14 @@ using TodoApiBackend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agregar el contexto de la base de datos en memoria
+// Agrego el contexto de la base de datos en memoria
 builder.Services.AddDbContext<TodoContext>(options =>
     options.UseInMemoryDatabase("TodoDb"));
 
-// Agregar controladores
+// Agrego controladores
 builder.Services.AddControllers();
 
-// Agregar y configurar CORS
+// Agrego y configuro CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
@@ -34,11 +34,11 @@ app.UseExceptionHandler(errorApp =>
     });
 });
 
-// Usar CORS en la aplicación
-app.UseCors("AllowSpecificOrigin");  // Aplicar la política CORS
+// Uso de CORS en la aplicación
+app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.MapControllers(); // Mapeamos los controladores
+app.MapControllers();
 
 app.Run();

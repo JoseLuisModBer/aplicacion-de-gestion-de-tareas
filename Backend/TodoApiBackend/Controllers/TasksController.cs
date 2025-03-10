@@ -16,14 +16,24 @@ namespace TodoApiBackend.Controllers
             _context = context;
         }
 
-        // GET: api/tasks
+         /*------------------------------------------------------*/
+
+        /*#########
+        ### GET ###
+        #########*/
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskItem>>> GetTasks()
         {
             return await _context.Tasks.ToListAsync();
         }
 
-        // GET: api/tasks/5
+        /*------------------------------------------------------*/
+
+        /*############
+        ### GET ID ###
+        ############*/
+
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskItem>> GetTask(int id)
         {
@@ -35,7 +45,12 @@ namespace TodoApiBackend.Controllers
             return task;
         }
 
-        // POST: api/tasks
+        /*------------------------------------------------------*/
+
+        /*##########
+        ### POST ###
+        ##########*/
+
         [HttpPost]
         public async Task<ActionResult<TaskItem>> PostTask(TaskItem task)
         {
@@ -50,7 +65,12 @@ namespace TodoApiBackend.Controllers
             return CreatedAtAction(nameof(GetTask), new { id = task.Id }, task);
         }
 
-        // PUT: api/tasks/5 (Actualización parcial)
+        /*------------------------------------------------------*/
+
+        /*#########
+        ### PUT ###
+        #########*/
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, TaskUpdateDto updatedTask)
         {
@@ -80,7 +100,12 @@ namespace TodoApiBackend.Controllers
             return Ok(task);
         }
 
-        // DELETE: api/tasks/5
+        /*------------------------------------------------------*/
+
+        /*############
+        ### DELETE ###
+        ############*/
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
