@@ -12,7 +12,7 @@
 
 ## Instrucciones para ejecutar el proyecto localmente
 
-- Copiar el SSH del respositorio de GITHUB
+- Copiar el SSH del [respositorio de GITHUB](https://github.com/JoseLuisModBer/aplicacion-de-gestion-de-tareas)
 - Crear una carpeta en tu PC.
 - Posicionarse en la carpeta con el terminal e introducir el siguiente comando
 
@@ -30,7 +30,9 @@ git clone git@github.com:JoseLuisModBer/aplicacion-de-gestion-de-tareas.git
 - Dentro de la carpeta "Backend" hay una carpeta llamada "TodoApiBackend". Nos posicionaremos en ella udando el terminal y ejecutaremos el siguiente comando para poner en escucha el servidor:
 
 ```
+//En caso de ser necesario instalar dependencias ejecutaremos previamente: dotnet restore
 dotnet run
+
 ```
 
 - Ahora ya podremos ejecutar el frontend y que funcione correctameente usando las bases de datos.
@@ -49,7 +51,7 @@ dotnet run
 npm i
 ```
 
-- Con npm i o npm install, instalararemos todo lo necesario para hacer que el proyecto funcione.
+- Con npm i o npm install, se creará la carpeta "node_modules" y se instalarán en ella todas las dependencias necesarias para hacer que el proyecto funcione.
 
 ```
 npm run dev
@@ -59,29 +61,82 @@ npm run dev
 
 ## Descripción del Backend
 
-- x
+### En cuanto a la configuración inicial y los módulos utilizados:
+
+- He creado el proyecto backend mediante el comando:
+
+```
+dotnet new webapi -o TodoApiBackend
+```
+
+- Esto me ha permitido generar una plantilla básica de API en C# utilizando ASP.NET Core.
+- he instalado el paquete Microsoft.EntityFrameworkCore.InMemory mediante el siguiente comando:
+
+```
+dotnet add package Microsoft.EntityFrameworkCore.InMemory
+
+```
+
+### En cuanto a la estructura de carpetas y archivos:
+
+- En la raiz del proyecto tengo el archivo **Program.cs** para agregar el contexto de la DB en memoria, agregar los controladores, configurar CORS y manejar excepciones.
+- En la carpeta **"CONTROLLERS"**, he creado el controlador principal **TaskController.cs**, que contiene las rutas necesarias para manejar las peticiones anteriormente comentadas (y que pueden ser testeadas con POSTMAN):
+- En la carppeta **"DATA"** he creado el archivo **TodoContext.cs** para definir el contexto de la base de datos.
+- En la carpeta **"MODELS"** he creado dos archivos:
+  - **"TaskForm.cs":** para crear el id de cada tarea, su título y descripción (con manejo de errores) el campo isCompleted y la fecha de creación.
+  - **"TaskUpdateDto.cs":** para hacer que las peticiones PUT se puedan realizar para cambios puntuales, sin que se exija modificar tanto el título como la descripción como el isCompleted.
 
 ## Descripción del Frontend
 
 ### En cuanto a la configuración inicial y los módulos utilizados:
 
-- He decidido crear el proyecto con npm create vite@latest utilizando React como framework y JavaScript en vez de TypeScript porque me manejo mejor. En el pasado he usado TypeScript pero he preferido decantarme por JavaScript para ganar en soltura y dedicar mis esfuerzos a la parte de Backend que me va a resultar más exigente.
+- He decidido crear el proyecto con npm create vite@latest
+
+```
+npm create vite@latest
+```
+
+- En la configuración de VITE he elegido React como framework y JavaScript en vez de TypeScript porque me manejo mejor. En el pasado he usado TypeScript pero he preferido decantarme por JavaScript para ganar en soltura y dedicar mis esfuerzos a la parte de Backend que me va a resultar más exigente.
 - He ejecutado npm install axios para hacer peticiones a la API.
+- He ejecutado npm install react react-dom y npm install --save react-router-dom para poder crear en App.jsx el enrutamiento necesario para poder hacer un header interactivo que me permita cargar pas páginas Home.jsx e Instructions.jsx. Además, apado por seguridad la siguiente ruta para hacer que si se carga cualquier otra url, lleve a la página Home.jsx:
+
+```
+<Route path="*" element={<Home />} />
+```
 
 ### En cuanto a la estructura de carpetas y archivos:
 
 - En SRC, he configurado los archivos main.jsx y App.jsx
-  - En main.jsx
-  - En App.jsx he optado simplemente por importar la página Home.jsx para poder redirigir a ella.
+  - En main.jsx dirijo a App.jsx pero aplicando BrowserRouter.
+  - En App.jsx he insertado el Header.jsx y el Footer.jsx y he creado el enrutamiento para dirigir a Home.jsx e Instrucciones.jsx según el caso.
 - En SRC, he creado tres carpetas dentro de SRC:
-  - "components" para los componentes reautilizables (TaskForm.jsx y TaskItem.jsx).
-  - "pages" para páginas como Home.jsx.
-  - "services" para las llamadas a la API (api.js).
+  - **"components"**, a su vez contiene cuatro carpetas:
+    - **"Footer":** que contiene Footer.jsx y Footer.css
+    - **"Header":** que contiene Header.jsx e Header.css
+    - **"TaskForm":** que contiene TaskForm.jsx y TaskForm.css
+    - **"TaskItem":** que contiene TaskItem.jsx e TaskItem.css
+  - **"pages"**, a su vez contiene dos carpetas:
+    - **"Home":** que contiene Home.jsx y Home.css
+    - **"Instructions":** que contiene Instructions.jsx e Instructions.css
+  - **"services"** para las llamadas a la API (api.js).
 
-## Lenguajes usados
+## Lenguajes y herramientas usados
 
-- React
-- Javascript
+### Lenguajes:
+
+- HTML
+- CSS
+- JavaScript
+- JSX (React)
+- C#
+- JSON (para configuraciones secundarias)
+- Markdown (para la creación del README.md)
+
+### Herramientas:
+
+- Vite
+- npm (para la gestión de paquetes)
+- .NET Core/ASP.NET Core
 
 ## Información sobre el autor
 
